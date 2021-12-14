@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1200,3034" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1200,3096" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -93,7 +93,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Opens the begining zoom page.&#xA;NOTE:&#xA;1) You need to login into the account first" DisplayName="Open Zoom Meeting" sap:VirtualizedContainerService.HintSize="712,2969.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Opens the begining zoom page.&#xA;NOTE:&#xA;1) You need to login into the account first&#xD;&#xA;2) You must specify which part of the excel sheet you wish to READ and WRITE to (may not be the same for every excel sheet)" DisplayName="Open Zoom Meeting" sap:VirtualizedContainerService.HintSize="712,3031.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_NameAndEmailData" />
     </Sequence.Variables>
@@ -115,20 +115,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Sequence sap2010:Annotation.AnnotationText="By Default this is set to Chrome browser. You can set to use IE if the chrome extension is not isntalled." DisplayName="Web - Chrome Browser" sap:VirtualizedContainerService.HintSize="670,2599.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence sap2010:Annotation.AnnotationText="By Default this is set to Chrome browser. You can set to use IE if the chrome extension is not isntalled." DisplayName="Web - Chrome Browser" sap:VirtualizedContainerService.HintSize="670,2644.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="NOTE: You will have to input your own zoom meeting url here. It should work regardless of zoom account being used&#xD;&#xA;" BrowserType="Chrome" DisplayName="Open - opens the zoom link that has the meeting url" sap:VirtualizedContainerService.HintSize="628,2476.66666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://zoom.us/meeting/94013882831">
+      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="NOTE: You will have to input your own zoom meeting url here. It should work regardless of zoom account being used&#xD;&#xA;" BrowserType="Chrome" DisplayName="Open - opens the zoom link that has the meeting url" sap:VirtualizedContainerService.HintSize="628,2522" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://zoom.us/meeting/94013882831">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="594,2312" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <Sequence sap:VirtualizedContainerService.HintSize="594,2357.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -324,12 +324,17 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEachRow>
               </Sequence>
-              <ui:WriteRange AddHeaders="False" DisplayName="Write Range - write to excel sheet" sap:VirtualizedContainerService.HintSize="552,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" StartingCell="A2:C165" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
+              <ui:WriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="Remember to change sheet number and cell range as needed" DisplayName="Write Range - write to excel sheet" sap:VirtualizedContainerService.HintSize="552,160" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" StartingCell="A2:C165" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
                 <ui:WriteRange.DataTable>
                   <InArgument x:TypeArguments="sd:DataTable">
                     <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">dt_NameAndEmailData</mca:CSharpValue>
                   </InArgument>
                 </ui:WriteRange.DataTable>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:WriteRange>
             </Sequence>
           </ActivityAction>
