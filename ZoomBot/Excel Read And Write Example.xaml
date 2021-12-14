@@ -70,10 +70,11 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Excel_Read_And_Write" sap:VirtualizedContainerService.HintSize="476,1268.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Excel_Read_And_Write" sap:VirtualizedContainerService.HintSize="380,802.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_NameAndEmailData" />
     </Sequence.Variables>
@@ -82,47 +83,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="remember to select the correct excel file to read&#xD;&#xA;" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,580" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\\Users\\brend\\wsl\\Zoom-Bot\\Dummy data for Zoom Bot.xlsx">
-      <ui:ExcelApplicationScope.Body>
-        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,426" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A1:B165" SheetName="Sheet1">
-              <ui:ExcelReadRange.DataTable>
-                <OutArgument x:TypeArguments="sd:DataTable">
-                  <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dt_NameAndEmailData</mca:CSharpReference>
-                </OutArgument>
-              </ui:ExcelReadRange.DataTable>
-            </ui:ExcelReadRange>
-            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" sap2010:Annotation.AnnotationText="Create a new column in the dataTable to allow zoom entries to be written ti it" ColumnName="Help la" DisplayName="Add Data Column - dt_NameAndEmailData" sap:VirtualizedContainerService.HintSize="334,235.333333333333" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1">
-              <ui:AddDataColumn.DataTable>
-                <InArgument x:TypeArguments="sd:DataTable">
-                  <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">dt_NameAndEmailData</mca:CSharpValue>
-                </InArgument>
-              </ui:AddDataColumn.DataTable>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:AddDataColumn>
-          </Sequence>
-        </ActivityAction>
-      </ui:ExcelApplicationScope.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ExcelApplicationScope>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="I need to add to the newly created empty column of the dataTable using a for loop&#xD;&#xA;" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,340" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Read Excel File workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Read Excel File.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_NameAndEmailData">
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">dt_NameAndEmailData</mca:CSharpReference>
+        </InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="I need to add to the newly created empty column of the dataTable using a for loop&#xA;" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="338,340" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -160,7 +128,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:WriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="Then I need to replace the entire initally selected portion of the excel table with the new dataTable&#xD;&#xA;" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="434,176.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A2:C165" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
+    <ui:WriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="Then I need to replace the entire initally selected portion of the excel table with the new dataTable&#xA;" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="338,176.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" StartingCell="A2:C165" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
       <ui:WriteRange.DataTable>
         <InArgument x:TypeArguments="sd:DataTable">
           <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">dt_NameAndEmailData</mca:CSharpValue>

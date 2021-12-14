@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1207.33333333333,2170" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Bot" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1200,3034" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -30,6 +30,18 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -67,7 +79,13 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -75,10 +93,9 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Opens the begining zoom page.&#xA;NOTE:&#xA;1) You need to login into the account first" DisplayName="Open Zoom Meeting" sap:VirtualizedContainerService.HintSize="672.666666666667,2105.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Opens the begining zoom page.&#xA;NOTE:&#xA;1) You need to login into the account first" DisplayName="Open Zoom Meeting" sap:VirtualizedContainerService.HintSize="712,2969.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="Brendan" Name="name" />
-      <Variable x:TypeArguments="x:String" Default="brendancej82@gmail.com" Name="email" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_NameAndEmailData" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -86,169 +103,242 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Web" sap:VirtualizedContainerService.HintSize="630.666666666667,1951.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This should read the excel file first, which then creates a new datatable with a new column&#xD;&#xA;" DisplayName="Invoke Read Excel File workflow" sap:VirtualizedContainerService.HintSize="670,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Read Excel File.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_NameAndEmailData">
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">dt_NameAndEmailData</mca:CSharpReference>
+        </InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <Sequence sap2010:Annotation.AnnotationText="By Default this is set to Chrome browser. You can set to use IE if the chrome extension is not isntalled." DisplayName="Web - Chrome Browser" sap:VirtualizedContainerService.HintSize="670,2599.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open https://zoom.us/meeting/94013882831" sap:VirtualizedContainerService.HintSize="588.666666666667,1859.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://zoom.us/meeting/94013882831">
+      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="NOTE: You will have to input your own zoom meeting url here. It should work regardless of zoom account being used&#xD;&#xA;" BrowserType="Chrome" DisplayName="Open - opens the zoom link that has the meeting url" sap:VirtualizedContainerService.HintSize="628,2476.66666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" Url="https://zoom.us/meeting/94013882831">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="554.666666666667,1756.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <Sequence sap:VirtualizedContainerService.HintSize="594,2312" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="512.666666666667,1664.66666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
-                <ui:ForEach.Body>
-                  <ActivityAction x:TypeArguments="x:Object">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
-                    </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1540" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A '" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
-                        <ui:Click.CursorPosition>
-                          <ui:CursorPosition OffsetX="104" OffsetY="8" Position="TopLeft" />
-                        </ui:Click.CursorPosition>
-                        <ui:Click.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fcdc652a-594e-427b-bae7-161757a44058" InformativeScreenshot="ae4254682b602a86d767807bd87a424c" Selector="&lt;webctrl aaname='https://zoom.us/meeting/register/tJAtduqgpjkiGdWguuSqOASALMUsl3I*' parentid='info_form' tag='A' /&gt;" WaitForReady="COMPLETE">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                          </ui:Target>
-                        </ui:Click.Target>
-                      </ui:Click>
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Open Meeting Registration Page Second Tab" sap:VirtualizedContainerService.HintSize="434,1302" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="8b7a82e2271b563f0be199fa2f6bff63" Selector="&lt;html app='chrome.exe' title='Meeting Registration - Zoom' /&gt;">
-                        <ui:BrowserScope.Body>
-                          <ActivityAction x:TypeArguments="x:Object">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1156" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                              <Sequence.Variables>
-                                <Variable x:TypeArguments="x:String" Default="Insert URL Here" Name="url" />
-                              </Sequence.Variables>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  question_first_n...'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_10">
-                                <ui:TypeInto.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="62e39ad9-a392-4f67-b430-812d14f7bb25" InformativeScreenshot="a6322944ea38751f8978567ca2c39dd6" Selector="&lt;webctrl tag='INPUT' type='text' /&gt;">
-                                    <ui:Target.TimeoutMS>
-                                      <InArgument x:TypeArguments="x:Int32" />
-                                    </ui:Target.TimeoutMS>
-                                    <ui:Target.WaitForReady>
-                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                    </ui:Target.WaitForReady>
-                                  </ui:Target>
-                                </ui:TypeInto.Target>
-                                <ui:TypeInto.Text>
-                                  <InArgument x:TypeArguments="x:String">
-                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">name</mca:CSharpValue>
-                                  </InArgument>
-                                </ui:TypeInto.Text>
-                              </ui:TypeInto>
-                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  question_email'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_11">
-                                <ui:TypeInto.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e67874f8-166f-4cd4-be77-4525c14837ed" InformativeScreenshot="1a59e4442f11b90b594c911812032fe4" Selector="&lt;webctrl tag='INPUT' type='email' /&gt;">
-                                    <ui:Target.TimeoutMS>
-                                      <InArgument x:TypeArguments="x:Int32" />
-                                    </ui:Target.TimeoutMS>
-                                    <ui:Target.WaitForReady>
-                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                    </ui:Target.WaitForReady>
-                                  </ui:Target>
-                                </ui:TypeInto.Target>
-                                <ui:TypeInto.Text>
-                                  <InArgument x:TypeArguments="x:String">
-                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">email</mca:CSharpValue>
-                                  </InArgument>
-                                </ui:TypeInto.Text>
-                              </ui:TypeInto>
-                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  question_confirm...'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_12">
-                                <ui:TypeInto.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5a99eeb8-e62c-4523-baab-97ffe5ca46ae" InformativeScreenshot="e7a04204102a49ba76eaf5c3462c5384" Selector="&lt;webctrl id='question_confirm_email' tag='INPUT' type='email' /&gt;">
-                                    <ui:Target.TimeoutMS>
-                                      <InArgument x:TypeArguments="x:Int32" />
-                                    </ui:Target.TimeoutMS>
-                                    <ui:Target.WaitForReady>
-                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                    </ui:Target.WaitForReady>
-                                  </ui:Target>
-                                </ui:TypeInto.Target>
-                                <ui:TypeInto.Text>
-                                  <InArgument x:TypeArguments="x:String">
-                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">email</mca:CSharpValue>
-                                  </InArgument>
-                                </ui:TypeInto.Text>
-                              </ui:TypeInto>
-                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1">
-                                <ui:MessageBox.Text>
-                                  <InArgument x:TypeArguments="x:Object">
-                                    <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">"Solve The Captcha If it exists"</mca:CSharpValue>
-                                  </InArgument>
-                                </ui:MessageBox.Text>
-                              </ui:MessageBox>
-                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  btnSubmit'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
-                                <ui:Click.CursorPosition>
-                                  <ui:CursorPosition OffsetX="59" OffsetY="23" Position="TopLeft" />
-                                </ui:Click.CursorPosition>
-                                <ui:Click.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3b471a46-1aad-476a-9748-e2ba33491d50" InformativeScreenshot="5d4f303dc88f11f604f9da23688d3b4e" Selector="&lt;webctrl id='btnSubmit' tag='A' /&gt;" WaitForReady="COMPLETE">
-                                    <ui:Target.TimeoutMS>
-                                      <InArgument x:TypeArguments="x:Int32" />
-                                    </ui:Target.TimeoutMS>
-                                  </ui:Target>
-                                </ui:Click.Target>
-                              </ui:Click>
-                              <ui:GetFullText DisplayName="Get Full Text 'A '" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetFullText_1" IgnoreHidden="True">
-                                <ui:GetFullText.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d3ebdeda-3f1d-46ce-bd38-bdb55ba02e23" InformativeScreenshot="adab3e73605f5d77f6609fd478dd7a6b" Selector="&lt;webctrl aaname='https://zoom.us/w/94013882831?tk=0qHNizzdzC99k6BJOj5O61D-AMeMkcT*' parentid='meeting_register_container' tag='A' /&gt;" WaitForReady="COMPLETE">
-                                    <ui:Target.TimeoutMS>
-                                      <InArgument x:TypeArguments="x:Int32" />
-                                    </ui:Target.TimeoutMS>
-                                  </ui:Target>
-                                </ui:GetFullText.Target>
-                                <ui:GetFullText.Text>
-                                  <OutArgument x:TypeArguments="x:String">
-                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">url</mca:CSharpReference>
-                                  </OutArgument>
-                                </ui:GetFullText.Text>
-                              </ui:GetFullText>
-                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1">
-                                <InArgument x:TypeArguments="x:String">
-                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">url</mca:CSharpValue>
-                                </InArgument>
-                              </WriteLine>
-                              <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:BrowserScope.Body>
-                      </ui:BrowserScope>
-                    </Sequence>
-                  </ActivityAction>
-                </ui:ForEach.Body>
-                <ui:ForEach.Values>
-                  <InArgument x:TypeArguments="sc:IEnumerable">
-                    <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">Enumerable.Range(0,3)</mca:CSharpValue>
+              <Sequence DisplayName="Sequence - For Loop Sequence" sap:VirtualizedContainerService.HintSize="552,2065.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="This loops through the dataTable, which then first reads the name and email from the excel sheet, followed by adding the new scraped zoom links into the excel sheet&#xD;&#xA;" DisplayName="For Each Row in Data Table - dt_NameAndEmailData" sap:VirtualizedContainerService.HintSize="510,1973.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                      </ActivityAction.Argument>
+                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Sequence - Register Users" sap:VirtualizedContainerService.HintSize="476,1790.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - click zoom register page link" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition OffsetX="104" OffsetY="8" Position="TopLeft" />
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fcdc652a-594e-427b-bae7-161757a44058" InformativeScreenshot="ae4254682b602a86d767807bd87a424c" Selector="&lt;webctrl aaname='https://zoom.us/meeting/register/tJAtduqgpjkiGdWguuSqOASALMUsl3I*' parentid='info_form' tag='A' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Open Meeting Registration Page Second Tab" sap:VirtualizedContainerService.HintSize="434,1552.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="8b7a82e2271b563f0be199fa2f6bff63" Selector="&lt;html app='chrome.exe' title='Meeting Registration - Zoom' /&gt;">
+                          <ui:BrowserScope.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Sequnce - Execute Actions on Registration Page" sap:VirtualizedContainerService.HintSize="376,1406.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="Insert URL Here" Name="scrapedZoomLink" />
+                                  <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="resultRegex" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type - First Name" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_13">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="62e39ad9-a392-4f67-b430-812d14f7bb25" InformativeScreenshot="a6322944ea38751f8978567ca2c39dd6" Selector="&lt;webctrl tag='INPUT' type='text' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                  <ui:TypeInto.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">row[0].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:TypeInto.Text>
+                                </ui:TypeInto>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type - Email" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_14">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e67874f8-166f-4cd4-be77-4525c14837ed" InformativeScreenshot="1a59e4442f11b90b594c911812032fe4" Selector="&lt;webctrl tag='INPUT' type='email' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                  <ui:TypeInto.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">row[1].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:TypeInto.Text>
+                                </ui:TypeInto>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type - Confirm Email" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_15">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5a99eeb8-e62c-4523-baab-97ffe5ca46ae" InformativeScreenshot="e7a04204102a49ba76eaf5c3462c5384" Selector="&lt;webctrl id='question_confirm_email' tag='INPUT' type='email' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                  <ui:TypeInto.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">row[1].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:TypeInto.Text>
+                                </ui:TypeInto>
+                                <ui:MessageBox ChosenButton="{x:Null}" sap2010:Annotation.AnnotationText="For now the user will have to mannually solve the captcha" AutoCloseAfter="00:00:00" Buttons="Ok" Caption="Does the Captcha Exist?" DisplayName="Message Box - Solve Captcha" sap:VirtualizedContainerService.HintSize="334,130.666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2">
+                                  <ui:MessageBox.Text>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">"Solve The Captcha If it exists"</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:MessageBox.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:MessageBox>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click- click on Register" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition OffsetX="59" OffsetY="23" Position="TopLeft" />
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3b471a46-1aad-476a-9748-e2ba33491d50" InformativeScreenshot="5d4f303dc88f11f604f9da23688d3b4e" Selector="&lt;webctrl id='btnSubmit' tag='A' /&gt;" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:GetFullText DisplayName="Get Full Text - URL link Div" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetFullText_5" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07056593-84e1-4366-9745-748aa1050498" InformativeScreenshot="b55aaa23b7130ed1f0398fa7a076016d" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='6' parentid='meeting_register_container' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">
+                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">scrapedZoomLink</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:GetFullText.Text>
+                                </ui:GetFullText>
+                                <ui:Matches sap2010:Annotation.AnnotationText="Removes all &quot;newline&quot; \n. I hate regex so much&#xD;&#xA;" BuilderPattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&amp;@#\/%=~_|$])" DisplayName="Matches - Regex To Find Https zoom Link Only" sap:VirtualizedContainerService.HintSize="334,104" sap2010:WorkflowViewState.IdRef="Matches_2" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;(?:(?:https?|ftp|file):\\\/\\\/|www\\.|ftp\\.)(?:\\([-A-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[-A-Z0-9+&amp;@#\\\/%=~_|$?!:,.])*(?:\\([-A-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[A-Z0-9+&amp;@#\\\/%=~_|$])&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&amp;@#\/%=~_|$])" RegexOption="IgnoreCase, Compiled">
+                                  <ui:Matches.Input>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">scrapedZoomLink.Replace("\n", "")</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:Matches.Input>
+                                  <ui:Matches.Result>
+                                    <OutArgument x:TypeArguments="scg:IEnumerable(str:Match)">
+                                      <mca:CSharpReference x:TypeArguments="scg:IEnumerable(str:Match)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">resultRegex</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:Matches.Result>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:Matches>
+                                <Assign sap2010:Annotation.AnnotationText="Writes the extracted result into each cell in the empty dataTable column&#xD;&#xA;" DisplayName="Assign - Write to dt_variable" sap:VirtualizedContainerService.HintSize="334,124" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Object">
+                                      <mca:CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">row[2]</mca:CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">resultRegex.First().ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:BrowserScope.Body>
+                        </ui:BrowserScope>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                  <ui:ForEachRow.DataTable>
+                    <InArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">dt_NameAndEmailData</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ForEachRow.DataTable>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEachRow>
+              </Sequence>
+              <ui:WriteRange AddHeaders="False" DisplayName="Write Range - write to excel sheet" sap:VirtualizedContainerService.HintSize="552,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" StartingCell="A2:C165" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
+                <ui:WriteRange.DataTable>
+                  <InArgument x:TypeArguments="sd:DataTable">
+                    <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">dt_NameAndEmailData</mca:CSharpValue>
                   </InArgument>
-                </ui:ForEach.Values>
-              </ui:ForEach>
+                </ui:WriteRange.DataTable>
+              </ui:WriteRange>
             </Sequence>
           </ActivityAction>
         </ui:OpenBrowser.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:OpenBrowser>
     </Sequence>
   </Sequence>
