@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Breakout_Rooms" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="560,719.333333333333" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Zoom_Breakout_Rooms" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1142,1290.66666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -33,6 +33,8 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -69,49 +71,99 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Zoom_Breakout_Rooms" sap:VirtualizedContainerService.HintSize="476,654.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="emailColumn" />
-      <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="breakoutRoomColumn" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_emailColumn" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_breakoutRoomsColumn" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Writes the First Name Column and the Breakout room column into a new csv regardless of whether same column sizes&#xD;&#xA;" DisplayName="Zoom_Breakout_Rooms" sap:VirtualizedContainerService.HintSize="552,1226" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Sheet1" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
-      <ui:ReadRange.DataTable>
-        <OutArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">dt_emailColumn</mca:CSharpReference>
-        </OutArgument>
-      </ui:ReadRange.DataTable>
-    </ui:ReadRange>
-    <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="D1" SheetName="Sheet1" WorkbookPath="C:\Users\brend\wsl\Zoom-Bot\Dummy data for Zoom Bot.xlsx">
-      <ui:ReadRange.DataTable>
-        <OutArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">dt_breakoutRoomsColumn</mca:CSharpReference>
-        </OutArgument>
-      </ui:ReadRange.DataTable>
-    </ui:ReadRange>
-    <ui:AppendCsvFile Encoding="{x:Null}" Delimitator="Comma" DisplayName="Append to CSV" FilePath="breakout.csv" sap:VirtualizedContainerService.HintSize="434,134.666666666667" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1">
-      <ui:AppendCsvFile.DataTable>
-        <InArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">dt_emailColumn</mca:CSharpValue>
-        </InArgument>
-      </ui:AppendCsvFile.DataTable>
-    </ui:AppendCsvFile>
-    <ui:AppendCsvFile Encoding="{x:Null}" Delimitator="Comma" DisplayName="Append to CSV" FilePath="breakout.csv" sap:VirtualizedContainerService.HintSize="434,134.666666666667" sap2010:WorkflowViewState.IdRef="AppendCsvFile_2">
-      <ui:AppendCsvFile.DataTable>
-        <InArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">dt_breakoutRoomsColumn</mca:CSharpValue>
-        </InArgument>
-      </ui:AppendCsvFile.DataTable>
-    </ui:AppendCsvFile>
+    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Note:&#xD;&#xA;1) Take Note of the Column names for the excel sheet, change First Names to Email Address accordingly&#xD;&#xA;2) Choose the excel file location as needed&#xD;&#xA;" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="510,1072" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\\Users\\brend\\wsl\\Zoom-Bot\\Dummy data for Zoom Bot.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Sequence - Read excel sheet and write to CSV" sap:VirtualizedContainerService.HintSize="476,868" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_allColumns" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_newTable" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="reads the entire excel sheet and puts it in a dataTable&#xD;&#xA;" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
+              <ui:ExcelReadRange.DataTable>
+                <OutArgument x:TypeArguments="sd:DataTable">
+                  <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">dt_allColumns</mca:CSharpReference>
+                </OutArgument>
+              </ui:ExcelReadRange.DataTable>
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExcelReadRange>
+            <Assign sap2010:Annotation.AnnotationText="Selectively chooses which columns to add to a new dataTable&#xD;&#xA;" DisplayName="Assign - choose columns" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">
+                  <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">dt_newTable</mca:CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">
+                  <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">dt_allColumns.DefaultView.ToTable(false, "Breakout Rooms", "First Name")</mca:CSharpValue>
+                </InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Change the Column Name according to the excel sheet specifications&#xD;&#xA;" Code="dataTable.Columns[&quot;First Name&quot;].ColumnName = &quot;Email Adress&quot;;&#xD;&#xA;dataTable.Columns[&quot;Breakout Rooms&quot;].ColumnName = &quot;Pre-assign Room Name&quot;;" DisplayName="Invoke code - Change Column Names" sap:VirtualizedContainerService.HintSize="434,226" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+              <ui:InvokeCode.Arguments>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="dataTable">
+                  <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">dt_newTable</mca:CSharpValue>
+                </InArgument>
+              </ui:InvokeCode.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeCode>
+            <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="feel free to name your csv file whatever you want&#xD;&#xA;" Delimitator="Comma" DisplayName="Write CSV - write to breakout_room.csv" FilePath="breakout_room.csv" sap:VirtualizedContainerService.HintSize="434,202" sap2010:WorkflowViewState.IdRef="WriteCsvFile_5">
+              <ui:WriteCsvFile.DataTable>
+                <InArgument x:TypeArguments="sd:DataTable">
+                  <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">dt_newTable</mca:CSharpValue>
+                </InArgument>
+              </ui:WriteCsvFile.DataTable>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:WriteCsvFile>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
