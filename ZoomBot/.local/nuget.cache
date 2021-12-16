@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vl+zlkFTtApe39cWdxdpTi2XMKmsqw5ucTitE5bxeTwAzz2/6bqwxkad1PTJQMnK00g2JQ3PjInRIsBlj7oC6w==",
+  "dgSpecHash": "RBH1ZUKOqJlwYaYbIilyx2dQFTfqEgUrP2r5z5v8O7llQlw0V5w0mQKWCDGJ/STS4NK4aK8v9BsukAmB439lSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local\\",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.aspnetcore.signalr.client.core\\3.1.6\\microsoft.aspnetcore.signalr.client.core.3.1.6.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\3.1.6\\microsoft.aspnetcore.signalr.common.3.1.6.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\3.1.6\\microsoft.aspnetcore.signalr.protocols.json.3.1.6.nupkg.sha512",
-    "C:\\Users\\brend\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.codeanalysis.common\\3.8.0\\microsoft.codeanalysis.common.3.8.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.8.0\\microsoft.codeanalysis.csharp.3.8.0.nupkg.sha512",
@@ -40,6 +40,8 @@
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.6\\microsoft.extensions.logging.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.extensions.options\\3.1.6\\microsoft.extensions.options.3.1.6.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.6\\microsoft.extensions.primitives.3.1.6.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\microsoft.graph\\3.32.0\\microsoft.graph.3.32.0.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\microsoft.graph.core\\1.25.1\\microsoft.graph.core.1.25.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.identity.client\\4.32.0\\microsoft.identity.client.4.32.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.identity.client.desktop\\4.32.0\\microsoft.identity.client.desktop.4.32.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.rest.clientruntime\\2.3.21\\microsoft.rest.clientruntime.2.3.21.nupkg.sha512",
@@ -48,7 +50,7 @@
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.web.webview2\\1.0.705.50\\microsoft.web.webview2.1.0.705.50.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.17763.1000\\microsoft.windows.sdk.contracts.10.0.17763.1000.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\mimekit\\2.10.0\\mimekit.2.10.0.nupkg.sha512",
-    "C:\\Users\\brend\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\nito.asyncex\\5.1.0\\nito.asyncex.5.1.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\nito.asyncex.context\\5.1.0\\nito.asyncex.context.5.1.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\nito.asyncex.coordination\\5.1.0\\nito.asyncex.coordination.5.1.0.nupkg.sha512",
@@ -65,8 +67,11 @@
     "C:\\Users\\brend\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.io.abstractions\\3.0.10\\system.io.abstractions.3.0.10.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\system.linq.async\\5.0.0\\system.linq.async.5.0.0.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\system.linq.async.queryable\\5.0.0\\system.linq.async.queryable.5.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.management.automation\\6.1.7601.17515\\system.management.automation.6.1.7601.17515.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
@@ -88,13 +93,15 @@
     "C:\\Users\\brend\\.nuget\\packages\\uipath.excel.activities\\2.11.4\\uipath.excel.activities.2.11.4.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.imageprocessing\\21.10.2\\uipath.imageprocessing.21.10.2.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.mail.activities\\1.12.3\\uipath.mail.activities.1.12.3.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\uipath.microsoftoffice365.activities\\1.11.1\\uipath.microsoftoffice365.activities.1.11.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.ocr.activities\\3.3.2\\uipath.ocr.activities.3.3.2.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.ocr.contracts\\2.9.1\\uipath.ocr.contracts.2.9.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.platform\\21.10.0\\uipath.platform.21.10.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.system.activities\\21.10.3\\uipath.system.activities.21.10.3.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.telemetry.client\\1.5.3\\uipath.telemetry.client.1.5.3.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\uipath.uiautomation.activities\\21.10.4\\uipath.uiautomation.activities.21.10.4.nupkg.sha512",
-    "C:\\Users\\brend\\.nuget\\packages\\uipath.vision\\3.1.4\\uipath.vision.3.1.4.nupkg.sha512"
+    "C:\\Users\\brend\\.nuget\\packages\\uipath.vision\\3.1.4\\uipath.vision.3.1.4.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\uipathteam.outlookcalendar.activities\\1.0.0\\uipathteam.outlookcalendar.activities.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }
