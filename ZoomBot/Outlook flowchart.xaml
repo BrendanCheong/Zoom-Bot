@@ -248,7 +248,7 @@
                                       <av:PointCollection x:Key="ConnectorLocation">620,789.353333333333 620,846.666666666667</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:IsMatch BuilderPattern="^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="IsMatch_3" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$" RegexOption="IgnoreCase, Compiled">
+                                  <ui:IsMatch BuilderPattern="^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="IsMatch_3" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^(0[0-9]|1[0-9]|2[0-3])[0-5][0-9]$" RegexOption="IgnoreCase, Compiled">
                                     <ui:IsMatch.Input>
                                       <InArgument x:TypeArguments="x:String">
                                         <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">endTime</mca:CSharpValue>
@@ -287,7 +287,7 @@
                                               <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Outlook Email Bot workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="True" WorkflowFileName="Outlook Email Bot.xaml">
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Outlook Email Bot workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="True" WorkflowFileName="Outlook Email Bot - Plugin version.xaml">
                                             <ui:InvokeWorkflowFile.Arguments>
                                               <InArgument x:TypeArguments="x:String" x:Key="startingDate">
                                                 <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">startDate</mca:CSharpValue>
