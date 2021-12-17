@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "RBH1ZUKOqJlwYaYbIilyx2dQFTfqEgUrP2r5z5v8O7llQlw0V5w0mQKWCDGJ/STS4NK4aK8v9BsukAmB439lSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asyk\\Zoom-Bot\\ZoomBot\\.local\\",
+  "projectFilePath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\brend\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
