@@ -8191,15 +8191,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\brend\\.nuget\\packages\\": {}
+    "C:\\Users\\asyk\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "ZoomBot",
       "projectName": "ZoomBot",
-      "projectPath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local",
-      "packagesPath": "C:\\Users\\brend\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local"
+      "projectPath": "C:\\Users\\asyk\\Zoom-Bot\\ZoomBot\\.local",
+      "packagesPath": "C:\\Users\\asyk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\asyk\\Zoom-Bot\\ZoomBot\\.local"
     },
     "frameworks": {
       "net461": {
@@ -8235,7 +8235,7 @@
             "version": "[1.0.0, 1.0.0]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\brend\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
