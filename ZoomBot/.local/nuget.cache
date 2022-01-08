@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xhLru6gQdARQt/At0wbAkoUb3BN5/9dh3R7XKzWjsO7uM3HCyI244XGZwkim+ubxXfPrj82szfU+Q+08C+9/eQ==",
+  "dgSpecHash": "+d4EXxArcp0UilUai4iJkGZ1b43Mi4yKsD5Qt0Ncdc8Nyg7AtpNfNxBq2/r+nMt9t0SemcwpUt+H6ShLVX5oKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local\\",
+  "projectFilePath": "C:\\Users\\asyk\\Zoom-Bot\\ZoomBot\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\asyk\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
@@ -97,6 +97,7 @@
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.ocr.activities\\3.3.2\\uipath.ocr.activities.3.3.2.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.ocr.contracts\\2.9.1\\uipath.ocr.contracts.2.9.1.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.platform\\21.10.0\\uipath.platform.21.10.0.nupkg.sha512",
+    "C:\\Users\\asyk\\.nuget\\packages\\uipath.python.activities\\1.4.1\\uipath.python.activities.1.4.1.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.system.activities\\21.10.3\\uipath.system.activities.21.10.3.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.telemetry.client\\1.5.3\\uipath.telemetry.client.1.5.3.nupkg.sha512",
     "C:\\Users\\asyk\\.nuget\\packages\\uipath.uiautomation.activities\\21.10.4\\uipath.uiautomation.activities.21.10.4.nupkg.sha512",
