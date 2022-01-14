@@ -36,6 +36,32 @@
           "lib/DocumentFormat.OpenXml.dll": {}
         }
       },
+      "FPT.Dialog.Activities/1.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Activities",
+          "System.Activities.Core.Presentation",
+          "System.Activities.Presentation",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/FPT.Dialog.Activities.Design.dll": {},
+          "lib/net461/FPT.Dialog.Activities.dll": {}
+        }
+      },
       "Google.Apis/1.43.0": {
         "type": "package",
         "dependencies": {
@@ -2272,6 +2298,32 @@
         },
         "runtime": {
           "lib/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "FPT.Dialog.Activities/1.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Activities",
+          "System.Activities.Core.Presentation",
+          "System.Activities.Presentation",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net461/_._": {}
+        },
+        "runtime": {
+          "lib/net461/FPT.Dialog.Activities.Design.dll": {},
+          "lib/net461/FPT.Dialog.Activities.dll": {}
         }
       },
       "Google.Apis/1.43.0": {
@@ -4511,6 +4563,21 @@
         "documentformat.openxml.2.5.0.nupkg.sha512",
         "documentformat.openxml.nuspec",
         "lib/DocumentFormat.OpenXml.dll"
+      ]
+    },
+    "FPT.Dialog.Activities/1.0.0": {
+      "sha512": "yvweHo9L7/dDngTc9LQE/1OWlEtPcN1MnZnsBxjd84OfxO4ZBeCd84G0evsNk4TigtlAJGpnJY3K+FFQvAmd0g==",
+      "type": "package",
+      "path": "fpt.dialog.activities/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "fpt.dialog.activities.1.0.0.nupkg.sha512",
+        "fpt.dialog.activities.nuspec",
+        "lib/net461/FPT.Dialog.Activities.Design.dll",
+        "lib/net461/FPT.Dialog.Activities.Design.xml",
+        "lib/net461/FPT.Dialog.Activities.dll",
+        "lib/net461/FPT.Dialog.Activities.xml",
+        "packageIcon.png"
       ]
     },
     "Google.Apis/1.43.0": {
@@ -8182,6 +8249,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
+      "FPT.Dialog.Activities >= 1.0.0 <= 1.0.0",
       "UiPath.Excel.Activities >= 2.11.4 <= 2.11.4",
       "UiPath.Mail.Activities >= 1.12.3 <= 1.12.3",
       "UiPath.MicrosoftOffice365.Activities >= 1.11.1 <= 1.11.1",
@@ -8204,6 +8272,11 @@
     "frameworks": {
       "net461": {
         "dependencies": {
+          "FPT.Dialog.Activities": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.0, 1.0.0]"
+          },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
             "target": "Package",

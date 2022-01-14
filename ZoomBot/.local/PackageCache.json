@@ -237,6 +237,17 @@
         "C:\\Users\\brend\\.nuget\\packages\\uipathteam.outlookcalendar.activities/1.0.0\\lib/net461/UiPathTeam.OutlookCalendar.Activities.dll"
       ],
       "Path": "C:\\Users\\brend\\.nuget\\packages\\uipathteam.outlookcalendar.activities\\1.0.0"
+    },
+    {
+      "Package": {
+        "Id": "FPT.Dialog.Activities",
+        "Version": "1.0.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities/1.0.0\\lib/net461/FPT.Dialog.Activities.Design.dll",
+        "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities/1.0.0\\lib/net461/FPT.Dialog.Activities.dll"
+      ],
+      "Path": "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities\\1.0.0"
     }
   ],
   "Conflicts": [],
@@ -268,6 +279,11 @@
     "DocumentFormat.OpenXml": {
       "Id": "DocumentFormat.OpenXml",
       "Version": "2.5.0",
+      "Dependencies": []
+    },
+    "FPT.Dialog.Activities": {
+      "Id": "FPT.Dialog.Activities",
+      "Version": "1.0.0",
       "Dependencies": []
     },
     "Google.Apis": {
@@ -1551,6 +1567,17 @@
         "C:\\Users\\brend\\.nuget\\packages\\documentformat.openxml\\2.5.0\\lib\\DocumentFormat.OpenXml.dll"
       ],
       "Path": "C:\\Users\\brend\\.nuget\\packages\\documentformat.openxml\\2.5.0"
+    },
+    {
+      "Package": {
+        "Id": "FPT.Dialog.Activities",
+        "Version": "1.0.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities\\1.0.0\\lib\\net461\\FPT.Dialog.Activities.Design.dll",
+        "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities\\1.0.0\\lib\\net461\\FPT.Dialog.Activities.dll"
+      ],
+      "Path": "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities\\1.0.0"
     },
     {
       "Package": {

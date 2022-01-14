@@ -1,0 +1,125 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Email_Sender_Workflow" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="514.666666666667,1480.66666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>UiPath.Core</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>FPT.Dialog.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="476,1416" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="calendarFilePath" />
+      <Variable x:TypeArguments="x:String" Default="https://zoom.us/w/94013882831?tk=GaaEDAQUgeudJWLgxJch-tcmtWDpY0PZACmt1Efce0c.DQMAAAAV46oBzxZ2U1lYbkdkQ1NEQzBaOXA5Zkgxd2J3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&amp;pwd=RDQwVWZ0YkhZa09qZ1JzcVdhbmxSUT09" Name="ZoomLink" />
+      <Variable x:TypeArguments="x:String" Name="EmailRecipient">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">sedat28323@reamtv.com</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Alvin Siah" Name="recipientName" />
+      <Variable x:TypeArguments="x:String" Name="templateEmail" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Select Calendar File" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Select your .ics file (aka) your calendar plans to be sent through outlook&quot;]" />
+    <ui:SelectFile DisplayName="Select File - select ics file" Filter="(*.ics)|*.ics" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="SelectFile_1" SelectedFile="[calendarFilePath]" />
+    <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Select Email Template" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Select your Email template .oft file to be used as the email template!&quot;]" />
+    <ui:SelectFile sap2010:Annotation.AnnotationText="Can only select *.oft files&#xA;" DisplayName="Select File - select .oft files" Filter="(*.oft)|*.oft" sap:VirtualizedContainerService.HintSize="434,185.333333333333" sap2010:WorkflowViewState.IdRef="SelectFile_2" SelectedFile="[templateEmail]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:SelectFile>
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,542.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(0, 2)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="readDrafts" sap:VirtualizedContainerService.HintSize="376,414.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="C:\Users\brend\Desktop\testMSG\Template_1.oft" Name="inputPath" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[inputPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[templateEmail]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:Comment sap:VirtualizedContainerService.HintSize="334,94" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// separate variables with space&#xA;ClientName ZoomLink EmailRecipient Attachments InputPath OutputPath" />
+            <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[&quot;&quot;&quot;&quot; + recipientName + &quot;&quot;&quot;&quot; + &quot;&quot; + &quot; &quot;+ ZoomLink + &quot; &quot;  + EmailRecipient + &quot; &quot; + calendarFilePath + &quot; &quot;+ inputPath + &quot; &quot;]" DisplayName="Start process" FileName="EmailScript.vbs" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Email Process Complete! You May Close This Window Now&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "RBH1ZUKOqJlwYaYbIilyx2dQFTfqEgUrP2r5z5v8O7llQlw0V5w0mQKWCDGJ/STS4NK4aK8v9BsukAmB439lSA==",
+  "dgSpecHash": "PIvIu5ZY4UJ5sRyRWK4/wPzAFLQ5XmtOmSPbHQMVebiWjkWUeCkga+JvGbWG753qqncsMZE9lSilaCH2NNz8hw==",
   "success": true,
   "projectFilePath": "C:\\Users\\brend\\wsl\\Zoom-Bot\\ZoomBot\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\brend\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\documentformat.openxml\\2.5.0\\documentformat.openxml.2.5.0.nupkg.sha512",
+    "C:\\Users\\brend\\.nuget\\packages\\fpt.dialog.activities\\1.0.0\\fpt.dialog.activities.1.0.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\google.apis\\1.43.0\\google.apis.1.43.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\google.apis.auth\\1.43.0\\google.apis.auth.1.43.0.nupkg.sha512",
     "C:\\Users\\brend\\.nuget\\packages\\google.apis.calendar.v3\\1.43.0.1872\\google.apis.calendar.v3.1.43.0.1872.nupkg.sha512",
