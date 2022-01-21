@@ -44,7 +44,7 @@
     "fileInfoCollection": [],
     "modernBehavior": false
   },
-  "expressionLanguage": "CSharp",
+  "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
       "filePath": "Main.xaml",
